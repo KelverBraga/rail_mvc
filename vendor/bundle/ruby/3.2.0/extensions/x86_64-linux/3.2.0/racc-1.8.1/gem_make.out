@@ -1,0 +1,18 @@
+current directory: /home/kelver/teste_app/vendor/bundle/ruby/3.2.0/gems/racc-1.8.1/ext/racc/cparse
+/home/kelver/.rbenv/versions/3.2.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/kelver/teste_app/vendor/bundle/ruby/3.2.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20260220-25524-8zzoob sitelibdir\=./.gem.20260220-25524-8zzoob clean
+
+current directory: /home/kelver/teste_app/vendor/bundle/ruby/3.2.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20260220-25524-8zzoob sitelibdir\=./.gem.20260220-25524-8zzoob
+compiling cparse.c
+linking shared-object racc/cparse.so
+
+current directory: /home/kelver/teste_app/vendor/bundle/ruby/3.2.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20260220-25524-8zzoob sitelibdir\=./.gem.20260220-25524-8zzoob install
+/usr/bin/install -c -m 0755 cparse.so ./.gem.20260220-25524-8zzoob/racc
+
+current directory: /home/kelver/teste_app/vendor/bundle/ruby/3.2.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20260220-25524-8zzoob sitelibdir\=./.gem.20260220-25524-8zzoob clean

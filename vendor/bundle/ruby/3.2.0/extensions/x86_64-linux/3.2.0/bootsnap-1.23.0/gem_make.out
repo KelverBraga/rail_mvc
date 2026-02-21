@@ -1,0 +1,23 @@
+current directory: /home/kelver/teste_app/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.23.0/ext/bootsnap
+/home/kelver/.rbenv/versions/3.2.2/bin/ruby extconf.rb
+checking for fdatasync() in unistd.h... yes
+checking for fstatat() in sys/stat.h... yes
+checking for whether -D_GNU_SOURCE is accepted as CPPFLAGS... yes
+checking for whether -O3 is accepted as CFLAGS... yes
+checking for whether -std=c99 is accepted as CFLAGS... yes
+creating Makefile
+
+current directory: /home/kelver/teste_app/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.23.0/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20260220-25524-up4u0k sitelibdir\=./.gem.20260220-25524-up4u0k clean
+
+current directory: /home/kelver/teste_app/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.23.0/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20260220-25524-up4u0k sitelibdir\=./.gem.20260220-25524-up4u0k
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.so
+
+current directory: /home/kelver/teste_app/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.23.0/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20260220-25524-up4u0k sitelibdir\=./.gem.20260220-25524-up4u0k install
+/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20260220-25524-up4u0k/bootsnap
+
+current directory: /home/kelver/teste_app/vendor/bundle/ruby/3.2.0/gems/bootsnap-1.23.0/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20260220-25524-up4u0k sitelibdir\=./.gem.20260220-25524-up4u0k clean
