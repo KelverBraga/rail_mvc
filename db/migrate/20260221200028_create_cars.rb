@@ -6,7 +6,7 @@ class CreateCars < ActiveRecord::Migration[8.1]
       t.string :color
       t.boolean :electric
       t.boolean :is_selling
-      t.float :price
+
       t.timestamps   
     end
   end
