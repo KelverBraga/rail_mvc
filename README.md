@@ -107,4 +107,4 @@ This project was developed to practice:
 ## Author
 
 Kelver Ruan Braga
-Automation Engineer | Ruby on Rails Developer
+Engineer | Ruby on Rails Developer
