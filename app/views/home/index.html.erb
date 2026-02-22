@@ -1,4 +1,25 @@
-    <%= @teste %>
+<h2>Carros Cadastrados</h2>
+<% @all_cars.each do |car| %>
+  <div style="border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; border-radius: 8px;">
+    
+    <p><strong>Modelo:</strong> <%= car.model %></p>
+    <p><strong>Ano:</strong> <%= car.year %></p>
+    <p><strong>Cor:</strong> <%= car.color %></p>
+    <p><strong>Elétrico:</strong><%= car.electric ? "Sim" : "Não" %></p>
+    <p><strong>Vendendo:</strong><%= car.is_selling ? "Sim" : "Não" %></p>
+    <p><strong>Preço:</strong><%= car.price.present? ? number_to_currency(car.price, unit: "R$ ") : "Não informado" %></p>
 
-    <hr />
-    <%= link_to "About Me", '/about' %>
+  </div>
+<% end %>
+
+<h2>Carros Disponíveis para Venda</h2>
+<% @available_cars.each do |car| %>
+
+  <div style="border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; border-radius: 8px;">
+      <p><strong>Modelo:</strong> <%= car.model %></p>
+      <p><strong>Ano:</strong> <%= car.year %></p>
+      <p><strong>Cor:</strong> <%= car.color %></p>
+      <p><strong>Preço:</strong><%= car.price.present? ? number_to_currency(car.price, unit: "R$ ") : "Não informado" %></p>
+  </div>
+
+<% end %>
