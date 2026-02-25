@@ -1,37 +1,60 @@
+<div class="main-container">
+  <h1>Store de Carros</h1>
 
-<h2>Cadastro de Carros</h2>
-<%= form_with model: @car || Car.new do |form| %>
-    <%= form.text_field :model, placeholder: "Digite o Modelo" %>
-    <%= form.text_field :year, placeholder: "Digite o Ano" %>
-    <%= form.text_field :color, placeholder: "Digite a Cor" %>
-    <%= form.check_box :electric %>
-    <%= form.check_box :is_selling %>
-    <%= form.number_field :price, step: 0.01, placeholder: "Digite o Preço" %>
-    <%= form.submit "Cadastrar" %>
-<% end %>
+  <h2>Cadastro de Carros</h2>
+  <%= form_with model: @car || Car.new, class: "form-cadastro" do |form| %>
+    <div class="form-grid">
+      <div class="form-group">
+        <%= form.label :model, "Modelo" %>
+        <%= form.text_field :model, placeholder: "Ex: Civic, Uno, X1" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :year, "Ano" %>
+        <%= form.text_field :year, placeholder: "Ex: 2024" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :color, "Cor" %>
+        <%= form.text_field :color, placeholder: "Ex: Preto, Branco" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :price, "Preço (R$)" %>
+        <%= form.number_field :price, step: 0.01, min: 0, placeholder: "0,00" %>
+      </div>
+    </div>
+    <div class="form-options">
+      <label class="form-checkbox">
+        <%= form.check_box :electric %>
+        <span>Elétrico</span>
+      </label>
+      <label class="form-checkbox">
+        <%= form.check_box :is_selling %>
+        <span>Disponível para venda</span>
+      </label>
+    </div>
+    <div class="form-actions">
+      <%= form.submit "Cadastrar" %>
+    </div>
+  <% end %>
 
-<h2>Carros Cadastrados</h2>
-<% @all_cars.each do |car| %>
-  <div style="border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; border-radius: 8px;">
-    
-    <p><strong>Modelo:</strong> <%= car.model %></p>
-    <p><strong>Ano:</strong> <%= car.year %></p>
-    <p><strong>Cor:</strong> <%= car.color %></p>
-    <p><strong>Elétrico:</strong><%= car.electric ? "Sim" : "Não" %></p>
-    <p><strong>Vendendo:</strong><%= car.is_selling ? "Sim" : "Não" %></p>
-    <p><strong>Preço:</strong><%= car.price.present? ? number_to_currency(car.price, unit: "R$ ") : "Não informado" %></p>
-
-  </div>
-<% end %>
-
-<h2>Carros Disponíveis para Venda</h2>
-<% @available_cars.each do |car| %>
-
-  <div style="border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; border-radius: 8px;">
+  <h2>Carros Cadastrados</h2>
+  <% @all_cars.each do |car| %>
+    <div class="car-card">
       <p><strong>Modelo:</strong> <%= car.model %></p>
       <p><strong>Ano:</strong> <%= car.year %></p>
       <p><strong>Cor:</strong> <%= car.color %></p>
-      <p><strong>Preço:</strong><%= car.price.present? ? number_to_currency(car.price, unit: "R$ ") : "Não informado" %></p>
-  </div>
+      <p><strong>Elétrico:</strong> <%= car.electric ? "Sim" : "Não" %></p>
+      <p><strong>Vendendo:</strong> <%= car.is_selling ? "Sim" : "Não" %></p>
+      <p><strong>Preço:</strong> <%= car.price.present? ? number_to_currency(car.price, unit: "R$ ") : "Não informado" %></p>
+    </div>
+  <% end %>
 
-<% end %>
+  <h2>Carros Disponíveis para Venda</h2>
+  <% @available_cars.each do |car| %>
+    <div class="car-card">
+        <p><strong>Modelo:</strong> <%= car.model %></p>
+        <p><strong>Ano:</strong> <%= car.year %></p>
+        <p><strong>Cor:</strong> <%= car.color %></p>
+        <p><strong>Preço:</strong> <%= car.price.present? ? number_to_currency(car.price, unit: "R$ ") : "Não informado" %></p>
+    </div>
+  <% end %>
+</div>
