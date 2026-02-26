@@ -24,6 +24,18 @@
   </head>
 
   <body>
+    <header class="top-nav">
+      <div class="top-nav-inner">
+        <div class="top-nav-title">
+          FIPE Car Store
+        </div>
+        <nav class="top-nav-links">
+          <%= link_to "Início", root_path %>
+          <%= link_to "Loja online", store_path %>
+        </nav>
+      </div>
+    </header>
+
     <%= yield %>
   </body>
 </html>

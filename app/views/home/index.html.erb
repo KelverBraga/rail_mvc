@@ -1,5 +1,27 @@
 <div class="main-container">
-  <h1>Store de Carros</h1>
+  <% if flash[:notice].present? || flash[:alert].present? %>
+    <div class="flash-messages">
+      <% if flash[:notice].present? %>
+        <div class="flash flash-notice"><%= flash[:notice] %></div>
+      <% end %>
+      <% if flash[:alert].present? %>
+        <div class="flash flash-alert"><%= flash[:alert] %></div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if @car && @car.errors.any? %>
+    <div class="error-messages">
+      <h3><%= pluralize(@car.errors.count, "erro") %> impediram o cadastro:</h3>
+      <ul>
+        <% @car.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h1>Loja de Carros</h1>
 
   <h2>Cadastro de Carros</h2>
   <%= form_with model: @car || Car.new, class: "form-cadastro" do |form| %>
@@ -36,25 +58,4 @@
     </div>
   <% end %>
 
-  <h2>Carros Cadastrados</h2>
-  <% @all_cars.each do |car| %>
-    <div class="car-card">
-      <p><strong>Modelo:</strong> <%= car.model %></p>
-      <p><strong>Ano:</strong> <%= car.year %></p>
-      <p><strong>Cor:</strong> <%= car.color %></p>
-      <p><strong>Elétrico:</strong> <%= car.electric ? "Sim" : "Não" %></p>
-      <p><strong>Vendendo:</strong> <%= car.is_selling ? "Sim" : "Não" %></p>
-      <p><strong>Preço:</strong> <%= car.price.present? ? number_to_currency(car.price, unit: "R$ ") : "Não informado" %></p>
-    </div>
-  <% end %>
-
-  <h2>Carros Disponíveis para Venda</h2>
-  <% @available_cars.each do |car| %>
-    <div class="car-card">
-        <p><strong>Modelo:</strong> <%= car.model %></p>
-        <p><strong>Ano:</strong> <%= car.year %></p>
-        <p><strong>Cor:</strong> <%= car.color %></p>
-        <p><strong>Preço:</strong> <%= car.price.present? ? number_to_currency(car.price, unit: "R$ ") : "Não informado" %></p>
-    </div>
-  <% end %>
 </div>

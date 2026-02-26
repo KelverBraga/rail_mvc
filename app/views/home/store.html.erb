@@ -1,0 +1,50 @@
+<div class="main-container">
+  <h1>Loja online de carros</h1>
+
+  <p class="store-subtitle">
+    Esta é uma loja de demonstração. Os preços de referência utilizados na análise de cada anúncio
+    são calculados a partir de dados públicos de preços médios de carros no Brasil
+    (conjunto de dados disponível em <code>https://www.kaggle.com/datasets/vagnerbessa/average-car-prices-bazil</code>).
+  </p>
+
+  <% if @cars.blank? %>
+    <p>
+      No momento, a vitrine da loja está zerada e não exibe nenhum veículo à venda.
+      Use a tela inicial para cadastrar carros e testar a análise de preços com base nessa base estatística.
+    </p>
+  <% else %>
+    <div class="store-grid">
+      <% @cars.each do |car| %>
+        <div class="store-card">
+          <div class="store-card-header">
+            <h2><%= car.model %> <span class="badge-year"><%= car.year %></span></h2>
+          </div>
+          <p class="store-price">
+            <%= number_to_currency(car.price, unit: "R$ ") %>
+          </p>
+          <p class="store-meta">
+            <span class="badge"><%= car.electric ? "Elétrico" : "Combustão" %></span>
+            <span class="badge badge-secondary"><%= car.color %></span>
+          </p>
+          <p class="store-meta">
+            <strong>Status:</strong>
+            <%= car.is_selling ? "À venda" : "Não está à venda" %>
+          </p>
+          <div class="store-actions">
+            <%= form_with model: car, url: car_path(car), method: :patch, class: "inline-form" do |f| %>
+              <%= f.label :price, "Editar preço (R$)", class: "inline-label" %>
+              <%= f.number_field :price, step: 0.01, min: 0, class: "inline-input" %>
+              <%= f.submit "Salvar", class: "btn-primary btn-small" %>
+            <% end %>
+            <%= button_to "Remover", car_path(car), method: :delete, data: { confirm: "Tem certeza que deseja remover este carro da loja?" }, class: "btn-danger" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <p style="margin-top: 2rem;">
+    <%= link_to "Anunciar meu carro", root_path, class: "back-link" %>
+  </p>
+</div>
+

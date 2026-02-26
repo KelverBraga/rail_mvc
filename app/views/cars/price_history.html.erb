@@ -1,0 +1,37 @@
+<div class="main-container">
+  <div class="flash-messages">
+    <% if flash[:notice].present? %>
+      <div class="flash flash-notice"><%= flash[:notice] %></div>
+    <% end %>
+  </div>
+
+  <h1>Análise de preço do veículo</h1>
+  <p>
+    Modelo: <strong><%= @car.model %></strong><br>
+    Ano informado no cadastro: <strong><%= @car.year %></strong><br>
+    Preço informado: <strong><%= @car.price.present? ? number_to_currency(@car.price, unit: "R$ ") : "Não informado" %></strong>
+  </p>
+
+  <div class="chart-container">
+    <h2>Como esse preço é analisado</h2>
+    <p>
+      Os valores de referência utilizados aqui vêm de um conjunto de dados públicos com preços médios de carros no Brasil,
+      disponível no Kaggle: <code>https://www.kaggle.com/datasets/vagnerbessa/average-car-prices-bazil</code>.
+      A partir dessa base, o sistema procura o modelo informado e encontra o preço médio mais próximo para o ano do veículo.
+    </p>
+    <p>
+      Com esse preço médio de referência, a aplicação compara o valor que você informou para o anúncio e calcula se o veículo
+      está acima ou abaixo da média de mercado, além de sugerir um preço mais competitivo quando faz sentido.
+      Mesmo quando não há um valor exato para o ano escolhido, a análise considera anos próximos para oferecer uma referência razoável.
+    </p>
+    <p>
+      Esses dados são apenas um apoio à decisão: condições reais de uso, quilometragem, histórico de manutenção e região podem
+      justificar valores diferentes dos encontrados na base estatística.
+    </p>
+  </div>
+
+  <p style="margin-top: 1.5rem;">
+    <%= link_to "Voltar para a Home", root_path, class: "back-link" %>
+  </p>
+</div>
+
